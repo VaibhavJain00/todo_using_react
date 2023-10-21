@@ -87,7 +87,7 @@ const page = () => {
       <form onSubmit={submitHandler} className="bg-slate-500">
         <input
           type="text"
-          className="text-2xl border-zinc-800 border-4 m-4 px-3 py-2"
+          className="text-2xl border-zinc-800 border-4 my-8 mx-4 px-3 py-2"
           placeholder="Enter our Task"
           value={title}
           onChange={(e) => {
@@ -97,7 +97,7 @@ const page = () => {
 
         <input
           type="text"
-          className="text-2xl border-zinc-800 border-4 m-4 px-3 py-2"
+          className="text-2xl border-zinc-800 border-4 mx-4 my-8 px-3 py-2"
           placeholder="Enter Decription Here"
           value={desc}
           onChange={(e) => {
