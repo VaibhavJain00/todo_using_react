@@ -50,39 +50,47 @@ const page = () => {
 
   if (mainTask.length > 0) {
     renderTask = mainTask.map((t, i) => {
-      return (
-        <li
-          key={i}
-          className="list-none flex items-center mb-5 py-4 justify-around"
-        >
-          <div className="text-2xl font-semibold">{i + 1}</div>
-          <div className="flex justify-between px-3  w-2/3">
-            <h5 className="text-2xl font-semibold">{t.title}</h5>
-            <h6 className="text-lg font-medium">{t.desc}</h6>
-          </div>
+    return (
+      <>
+          {i==0 && 
+            <div className="bg-slate-200 text-2xl font-semibold text-center py-4 ">
+              Task Remaining
+            </div>
+          }
+          <li
+            key={i}
+            className="list-none flex items-center mb-5 py-4 justify-around"
+          >
+            <div className="text-2xl font-semibold">{i + 1}</div>
+            <div className="flex justify-between px-3  w-2/3">
+              <h5 className="text-2xl font-semibold">{t.title}</h5>
+              <h6 className="text-lg font-medium">{t.desc}</h6>
+            </div>
 
-          <button
-            onClick={() => {
-              delteHandler(i);
-            }}
-            className="bg-red-400 text-white px-4 py-2 rounded font-bold"
-          >
-            Delete
-          </button>
-          <button
-            onClick={() => {
-              completeHandler(i);
-            }}
-            className="bg-green-400 text-white px-4 py-2 rounded font-bold"
-          >
-            Complete
-          </button>
-        </li>
+            <button
+              onClick={() => {
+                delteHandler(i);
+              }}
+              className="bg-red-400 text-white px-4 py-2 rounded font-bold"
+            >
+              Delete
+            </button>
+            <button
+              onClick={() => {
+                completeHandler(i);
+              }}
+              className="bg-green-400 text-white px-4 py-2 rounded font-bold"
+            >
+              Complete
+            </button>
+          </li>
+        </>
       );
     });
   }
   let renderTask2 = (
-    <h2 className="text-2xl font-semibold text-center py-4 ">
+    <h2 className="text-2xl font-semibold text-center py-4 "> 
+          Work Effectively to Comlplete The Task😊
     </h2>
   );
 
@@ -140,16 +148,13 @@ const page = () => {
           Add Task
         </button>
       </form>
-
-      <div className="bg-slate-200 text-2xl font-semibold text-center py-4 ">
-        Task Remaining
-      </div>
+      
       <hr />
       <div className="bg-slate-200">{renderTask}</div>
       <div className="bg-slate-500 text-2xl font-semibold text-center py-4 ">
         Total task Completed :{total}
       </div>
-      <div className="bg-slate-500">{renderTask2}</div>
+      <div className="bg-slate-300">{renderTask2}</div>
 
     </div>
   );
