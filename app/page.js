@@ -7,8 +7,10 @@ const page = () => {
   const [desc, setdesc] = useState("");
   const [mainTask, setmainTask] = useState([]);
   const [total, settotal] = useState(0);
+  const [complete, setcomplete] = useState([]);
 
   const submitHandler = (e) => {
+    console.log(e);
     e.preventDefault();
     if (title == "") {
       alert("Title of the task Cannot be empty");
@@ -28,6 +30,10 @@ const page = () => {
   
   const completeHandler = (i) => {
     let copytask = [...mainTask];
+    let task=mainTask[i];
+    setcomplete([...complete,task]);
+    
+    console.log(complete);
     copytask.splice(i, 1);
     setmainTask(copytask);
 
@@ -75,6 +81,31 @@ const page = () => {
       );
     });
   }
+  let renderTask2 = (
+    <h2 className="text-2xl font-semibold text-center py-4 ">
+    </h2>
+  );
+
+  if (complete.length > 0) {
+    renderTask2 = complete.map((t, i) => {
+      return (
+        <li
+          key={i}
+          className="list-none flex items-center mb-5 py-4 justify-around bg-slate-300"
+        >
+          <div className="text-2xl font-semibold">{i + 1}</div>
+          <div className="flex justify-between px-3  w-2/3">
+            <h5 className="text-2xl font-semibold">{t.title}</h5>
+            <h6 className="text-lg font-medium">{t.desc}</h6>
+          </div>
+          <div className="px-5" />
+          <div/>
+        </li>
+
+      );
+    });
+  }
+
   return (
     <div className="min-h-screen bg-slate-500">
       <h1
@@ -111,10 +142,15 @@ const page = () => {
       </form>
 
       <div className="bg-slate-200 text-2xl font-semibold text-center py-4 ">
-        Total task Completed :{total}
+        Task Remaining
       </div>
       <hr />
       <div className="bg-slate-200">{renderTask}</div>
+      <div className="bg-slate-500 text-2xl font-semibold text-center py-4 ">
+        Total task Completed :{total}
+      </div>
+      <div className="bg-slate-500">{renderTask2}</div>
+
     </div>
   );
 };
